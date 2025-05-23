@@ -1,5 +1,5 @@
 
-import AdminSidebar from '../../components/AdminSidebar'
+import AdminSidebar from '../components/AdminSidebar'
 import { useState, type ChangeEvent } from 'react'
 
 const NewProduct = () => {

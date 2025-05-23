@@ -1,5 +1,6 @@
-import AdminSidebar from '../../components/AdminSidebar'
-import { BarChart } from '../../components/Charts'
+
+import AdminSidebar from '../components/AdminSidebar'
+import { BarChart } from '../components/Charts'
 
 const BarCharts = () => {
     return (

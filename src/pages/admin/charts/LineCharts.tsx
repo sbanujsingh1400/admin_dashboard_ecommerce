@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
-import AdminSidebar from '../../components/AdminSidebar'
-import { LineChart } from '../../components/Charts'
+import AdminSidebar from '../components/AdminSidebar'
+import { LineChart } from '../components/Charts'
 const months = [
     "January",
     "February",

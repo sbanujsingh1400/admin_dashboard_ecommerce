@@ -1,0 +1,13 @@
+{ "component": "Dashboard", "path": "@/pages/Admin/Dashboard" },
+  { "component": "Customers", "path": "@/pages/Admin/Customers" },
+  { "component": "Transaction", "path": "@/pages/Admin/Transaction" },
+  { "component": "Products", "path": "@/pages/Admin/Products" },
+  { "component": "NewProduct", "path": "@/pages/Admin/management/NewProduct" },
+  { "component": "ProductManagement", "path": "@/pages/Admin/management/ProductManagement" },
+  { "component": "TransactionManagement", "path": "@/pages/Admin/management/TransactionManagement" },
+  { "component": "BarCharts", "path": "@/pages/Admin/charts/BarCharts" },
+  { "component ": "PieCharts", "path": "@/pages/Admin/charts/PieCharts" },
+  { "component": "LineCharts", "path": "@/pages/Admin/charts/LineCharts" },
+  { "component": "Stopwatch", "path": "@/pages/Admin/apps/Stopwatch" },
+  { "component": "Toss", "path": "@/pages/Admin/apps/Toss" },
+  { "component": "Coupon", "path": "@/pages/Admin/apps/Coupon" }

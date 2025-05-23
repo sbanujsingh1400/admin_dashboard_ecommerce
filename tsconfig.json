@@ -1,7 +1,38 @@
+// tsconfig.json
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    // This is crucial: it sets the base directory for resolving non-relative module names.
+    // Make sure this path is correct relative to your tsconfig.json file.
+    // If tsconfig.json is in your project root, then "." is correct.
+    "baseUrl": ".",
+    
+    // This defines your alias.
+    // "@/*" means any path starting with "@/"
+    // ["./src/*"] means resolve it relative to the baseUrl (which is '.') and then look inside the 'src' folder.
+    "paths": {
+      "@/*": ["./src/*"],
+      "@user/*": ["./src/pages/user/*"],
+      
+
+    },
+    
+    // ... keep your other existing compiler options
+    "target": "es2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx", // or "react-jsxdev" if you're using classic React
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"], // Ensure all your relevant files are included
+  "exclude": ["node_modules", "dist"] // Standard exclusions
 }

@@ -1,5 +1,5 @@
-import { useEffect, useState, type ReactElement } from 'react';
-import AdminSidebar from '../../components/AdminSidebar';
+import { useEffect, useState } from 'react';
+import AdminSidebar from '../components/AdminSidebar';
 
 
 const allLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

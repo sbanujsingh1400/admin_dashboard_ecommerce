@@ -1,11 +1,11 @@
 import { BsSearch } from "react-icons/bs";
-import AdminSidebar from "../components/AdminSidebar";
+import AdminSidebar from "./components/AdminSidebar";
 import { FaRegBell, FaRegUserCircle } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-import data from '../assets/data.json'
-import { BarChart, CircularChart } from "../components/Charts";
+import data from '../../assets/data.json'
+import { BarChart, CircularChart } from "./components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
-import DashBoardTable from "../components/DashBoardTable";
+import DashBoardTable from "./components/DashBoardTable";
 
 
  const Dashboard = () => {

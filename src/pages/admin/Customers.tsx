@@ -1,6 +1,6 @@
-import AdminSidebar from "../components/AdminSidebar";
+import AdminSidebar from "./components/AdminSidebar";
 import { createColumnHelper, type Column } from "@tanstack/react-table";
-import TableHOC from "../components/TableHOC";
+import TableHOC from "./components/TableHOC";
 import { useCallback, useState, type ReactElement } from "react";
 
 import {  FaTrash } from "react-icons/fa";

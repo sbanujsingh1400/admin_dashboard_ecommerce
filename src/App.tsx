@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 // import { Dashboard } from "./pages/dashboard"
 import { lazy, Suspense } from "react"
-import Loader from "./components/Loader"
+import Loader from "./pages/admin/components/Loader"
 
 
 
@@ -12,19 +12,26 @@ import Loader from "./components/Loader"
 
 
 
-const Dashboard = lazy(()=>import("./pages/Dashboard"))
-const Customers = lazy(()=>import("./pages/Customers"))
-const Transaction = lazy(()=>import("./pages/Transaction"))
-const Products = lazy(()=>import("./pages/Products"))
-const NewProduct = lazy(()=>import("./pages/management/NewProduct"))
-const ProductManagement = lazy(()=>import("./pages/management/ProductManagement"))
-const TransactionManagement = lazy(()=>import("./pages/management/TransactionManagement"))
-const BarCharts = lazy(()=>import("./pages/charts/BarCharts"))
-const PieCharts = lazy(()=>import("./pages/charts/PieCharts"))
-const LineCharts = lazy(()=>import("./pages/charts/LineCharts"))
-const Stopwatch = lazy(()=>import("./pages/apps/Stopwatch"))
-const Toss = lazy(()=>import("./pages/apps/Toss"))
-const Coupon = lazy(()=>import("./pages/apps/Coupon"))
+
+// USER IMPORTS LAZY LOADING
+const Home = lazy(()=>import('@user/Home'));
+const Search = lazy(()=>import('@user/Search'));
+const Cart = lazy(()=>import('@user/Cart'));
+// ADMIN IMPORTS LAZY LOADING
+const Dashboard = lazy(()=>import("./pages/admin/Dashboard"))
+const Customers = lazy(()=>import("./pages/admin/Customers"))
+const Transaction = lazy(()=>import("./pages/admin/Transaction"))
+const Products = lazy(()=>import("./pages/admin/Products"))
+const NewProduct = lazy(()=>import("./pages/admin/management/NewProduct"))
+const ProductManagement = lazy(()=>import("./pages/admin/management/ProductManagement"))
+const TransactionManagement = lazy(()=>import("./pages/admin/management/TransactionManagement"))
+const BarCharts = lazy(()=>import("./pages/admin/charts/BarCharts"))
+const PieCharts = lazy(()=>import("./pages/admin/charts/PieCharts"))
+const LineCharts = lazy(()=>import("./pages/admin/charts/LineCharts"))
+const Stopwatch = lazy(()=>import("./pages/admin/apps/Stopwatch"))
+const Toss = lazy(()=>import("./pages/admin/apps/Toss"))
+const Coupon = lazy(()=>import("./pages/admin/apps/Coupon"))
+
 
 function App() {
   
@@ -33,6 +40,7 @@ function App() {
     <Suspense fallback={<Loader />} >
       
     <Routes>
+      {/* ADMIN ROUTES START */}
       <Route path="/admin/dashboard" element={<Dashboard />}  />
       <Route path="/admin/product" element={<Products />}  />
       <Route path="/admin/customer" element={<Customers />}  />
@@ -50,6 +58,16 @@ function App() {
       <Route path="/admin/product/new" element={<NewProduct />}  />
       <Route path="/admin/product/:id" element={<ProductManagement />}  />
       <Route path="/admin/transaction/:id" element={<TransactionManagement />}  />
+
+
+      {/* ADMIN ROUTES END */}
+     
+      <Route path="/" element={<Home />}  />
+      <Route path="/search" element={<Search />}  />
+      <Route path="/cart" element={<Cart />}  />
+
+
+
     </Routes>
          </Suspense>
   )
