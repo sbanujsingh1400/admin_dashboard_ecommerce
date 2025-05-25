@@ -10,10 +10,9 @@
     // "@/*" means any path starting with "@/"
     // ["./src/*"] means resolve it relative to the baseUrl (which is '.') and then look inside the 'src' folder.
     "paths": {
-      "@/*": ["./src/*"],
       "@user/*": ["./src/pages/user/*"],
-      
-
+      "@admin/*": ["./src/pages/admin/*"],
+      "@/*": ["./src/*"],
     },
     
     // ... keep your other existing compiler options

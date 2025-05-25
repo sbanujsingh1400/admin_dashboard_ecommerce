@@ -2,20 +2,20 @@ import { Route, Routes } from "react-router-dom"
 // import { Dashboard } from "./pages/dashboard"
 import { lazy, Suspense } from "react"
 import Loader from "./pages/admin/components/Loader"
-
-
-
-
-
-
-
+import Shipping from "@user/Shipping";
+import Orders from "@user/Orders";
+// import Login from "./pages/Login";
 
 
 
 
 // USER IMPORTS LAZY LOADING
+const  Header =lazy(()=>import("@/components/Header")); 
 const Home = lazy(()=>import('@user/Home'));
+const Login = lazy(()=>import("@/pages/Login"))
+
 const Search = lazy(()=>import('@user/Search'));
+
 const Cart = lazy(()=>import('@user/Cart'));
 // ADMIN IMPORTS LAZY LOADING
 const Dashboard = lazy(()=>import("./pages/admin/Dashboard"))
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <Suspense fallback={<Loader />} >
-      
+      <Header />
     <Routes>
       {/* ADMIN ROUTES START */}
       <Route path="/admin/dashboard" element={<Dashboard />}  />
@@ -65,9 +65,16 @@ function App() {
       <Route path="/" element={<Home />}  />
       <Route path="/search" element={<Search />}  />
       <Route path="/cart" element={<Cart />}  />
+ 
+     {/* Not Logged in  routes */}
+     <Route path="/login" element={<Login />}  />
 
-
-
+ {/* Logged In User Routes */}
+      <Route>
+     <Route path="/shipping" element={<Shipping />}  />
+     <Route path="/orders" element={<Orders />}  />
+     
+     </Route>
     </Routes>
          </Suspense>
   )
