@@ -1,9 +1,13 @@
 import AdminSidebar from "./components/AdminSidebar";
 import { createColumnHelper, type Column } from "@tanstack/react-table";
 import TableHOC from "./components/TableHOC";
-import { useCallback, useState, type ReactElement } from "react";
+import { useCallback, useEffect, useState, type ReactElement } from "react";
 
 import {  FaTrash } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useAllUsersQuery, useDeleteUserMutation } from "@/redux/api/userApi";
+import { setDatasets } from "node_modules/react-chartjs-2/dist/utils";
+import { responseToast } from "@/utils/features";
 interface DataType{
   Avatar:ReactElement;
   Name:string;
@@ -73,10 +77,42 @@ const columns = [columnHelper.accessor('Avatar',{
 cell:info=>info.getValue()
 })]
 const Customers = () => {
-  const [data]= useState<DataType[]>(arr);
 
-  const Table =useCallback(TableHOC<DataType>(columns,data,"dashboard-product-box","Customers"),[])
+  const {user} = useSelector((state:any)=>state.userReducer);
+
+  const {data:api}= useAllUsersQuery(user._id)
+  const [deleteUserapi]= useDeleteUserMutation()
+  console.log(api)
+  const [data,setData]= useState<DataType[]>([]);
+  const deleteHandler= async(id:string)=>{
+
+    const res =await deleteUserapi({userId:id,adminUserId:user?._id});
+
+    responseToast(res,null,"")
+  }
+  const Table =useCallback(TableHOC<DataType>(columns,data,"dashboard-product-box","Customers"),[data])
    
+  useEffect(()=>{
+
+   if(api){
+    console.log(api)
+    
+    setData(api.users.map(u=>({
+      Avatar:<img  style={{
+        borderRadius: "50%",
+      }} src={u.photo} />,
+      Name:u.name,
+      Email:u.email,
+      Gender:u.gender,
+      Role:u.role,
+      Action:<button onClick={()=>{deleteHandler(u._id)}} ><FaTrash /></button>
+    })))
+   }
+
+  },[api])
+
+
+
   return (
     <div className="adminContainer" >
       

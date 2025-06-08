@@ -4,6 +4,7 @@ export type OrderItemType = {
     price: number;
     quantity: number;
     _id: string;
+    deleteHandler?:any
   };
   
   export type OrderType = {

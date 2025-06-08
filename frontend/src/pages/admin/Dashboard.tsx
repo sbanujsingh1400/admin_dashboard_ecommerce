@@ -6,9 +6,19 @@ import data from '../../assets/data.json'
 import { BarChart, CircularChart } from "./components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 import DashBoardTable from "./components/DashBoardTable";
+import { useSelector } from "react-redux";
+import { useStatsQuery } from "@/redux/api/dashboardApi";
 
 
  const Dashboard = () => {
+
+  const {user } = useSelector((state:any)=>state.userReducer);
+
+   const {data:statsData}=useStatsQuery(user._id);
+
+   console.log(statsData)
+  
+
   return (
     <div className="adminContainer" >
     <AdminSidebar />
@@ -22,8 +32,8 @@ import DashBoardTable from "./components/DashBoardTable";
   </div>
 <section className="widgetcontainer" >
 
- <WidgetItem percent={40} amount={true}  value={340000} heading="Revenue" color="skyblue" />
- <WidgetItem percent={-14} amount={false}  value={400} heading="Users" color="aqua" />
+ <WidgetItem percent={40} amount={true}  value={1000} heading="Revenue" color="skyblue" />
+ <WidgetItem percent={-14} amount={false}  value={1000} heading="Users" color="aqua" />
  <WidgetItem percent={80} amount={true}  value={230000} heading="Transactions" color="green" />
  <WidgetItem percent={30} amount={false}  value={1000} heading="Revenue" color="purple" />
 
